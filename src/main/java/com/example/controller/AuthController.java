@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,11 +18,10 @@ import com.example.service.UserService;
 @CrossOrigin
 public class AuthController {
 
-    private final UserService userService;
+	@Autowired
+    private  UserService userService;
 
-    public AuthController(UserService userService) {
-        this.userService = userService;
-    }
+   
 
     @PostMapping("/register")
     public ResponseEntity<UserDto> register(@RequestBody RegisterUserRequest request) {
