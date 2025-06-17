@@ -4,6 +4,8 @@ package com.example.controller;
 import com.example.dto.PostRequestDTO;
 import com.example.dto.PostResponseDTO;
 import com.example.service.PostService;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,11 +16,10 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class PostController {
 
-    private final PostService postService;
+	@Autowired
+    private  PostService postService;
 
-    public PostController(PostService postService) {
-        this.postService = postService;
-    }
+   
 
     @PostMapping("/create")
     public ResponseEntity<PostResponseDTO> createPost(@RequestBody PostRequestDTO request,
